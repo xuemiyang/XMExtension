@@ -15,7 +15,7 @@
 			e.printStackTrace();
 		}
 		xmObject.isXM = true;
-		System.out.println("\nªÒ»°ƒ£–Õ->Map--------------------------------\n");
+		System.out.println("\n模型->Map--------------------------------\n");
 		Map<String, Object> map = (Map<String, Object>) Object_XMMap.setObject(xmObject)
 				.getMapByObject(new XMObjectDidFinishConvertingToMap() {
 
@@ -28,7 +28,7 @@
 
 		System.out.println(map);
 
-		System.out.println("\n∆’Õ®¿‡–Õ->Map---------------------------------\n");
+		System.out.println("\n普通类型->Map---------------------------------\n");
 		Double double1 = 12.9;
 		Object object = Object_XMMap.setObject(double1).getMapByObject(null);
 		System.out.println(object);
@@ -37,7 +37,7 @@
 		object = Object_XMMap.setObject(map).getMapByObject(null);
 		System.out.println(object);
 
-		System.out.println("\nƒ£–Õ◊”¿‡->Map----------------------------------\n");
+		System.out.println("\n模型子类->Map----------------------------------\n");
 		XMObjectSub xmObjectSub = new XMObjectSub();
 		xmObjectSub.name = "rose";
 		xmObjectSub.age = 25;
@@ -56,7 +56,7 @@
 		map = (Map<String, Object>) Object_XMMap.setObject(xmObjectSub).getMapByObject(null);
 		System.out.println(map);
 
-		System.out.println("\nƒ£–Õ£®∞¸∫¨ƒ£–Õ ˝◊È£©->Map----------------------------------\n");
+		System.out.println("\n模型存在模型list->Map----------------------------------\n");
 		XMObjectArray objectArray = new XMObjectArray();
 		objectArray.name = "objectArray";
 		List<XMObjectSub> xmObjectSubs = new ArrayList<XMObjectSub>();
@@ -67,7 +67,7 @@
 		map = (Map<String, Object>) Object_XMMap.setObject(objectArray).getMapByObject(null);
 		System.out.println(map);
 
-		System.out.println("\nƒ£–Õ ˝◊È->Map ˝◊È----------------------------------\n");
+		System.out.println("\n模型list->Maplist----------------------------------\n");
 		List<Object> objectList = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			objectList.add(xmObject);
@@ -75,7 +75,7 @@
 		List<Object> list = Object_XMMap.setClass(XMObject.class).getMapArrayByClass(objectList);
 		System.out.println(list);
 
-		System.out.println("\nƒ£–Õ ˝◊È->Map ˝◊È£®‘ –ÌΩ¯––ƒ£–Õ◊÷µ‰◊™ªª£©----------------------------------\n");
+		System.out.println("\n模型list->Maplist（设置允许进行模型Map转化的属性名）----------------------------------\n");
 		List<String> allowedKeys = new ArrayList<>();
 		allowedKeys.add("name");
 		allowedKeys.add("age");
@@ -83,21 +83,21 @@
 		list = Object_XMMap.setClass(XMObject.class).getMapArrayByClassWithAllowedKeys(objectList, allowedKeys);
 		System.out.println(list);
 
-		System.out.println("\nƒ£–Õ ˝◊È->Map ˝◊È£®∫ˆ¬‘Ω¯––ƒ£–Õ◊÷µ‰◊™ªª£©----------------------------------\n");
+		System.out.println("\n模型list->Maplist（设置忽略进行模型Map转化的属性名）----------------------------------\n");
 		List<String> ignoredKeys = new ArrayList<>();
 		ignoredKeys.add("url");
 		list = Object_XMMap.setClass(XMObject.class).getMapArrayByClassWithIgnoredKeys(objectList, ignoredKeys);
 		System.out.println(list);
 
-		System.out.println("\nƒ£–Õ->Map£®‘ –ÌΩ¯––ƒ£–Õ◊÷µ‰◊™ªª£©----------------------------------\n");
+		System.out.println("\n模型->Map（设置允许进行模型Map转化的属性名）----------------------------------\n");
 		map = (Map<String, Object>) Object_XMMap.setObject(xmObject).getMapByObjectWithAllowedKeys(allowedKeys, null);
 		System.out.println(map);
 
-		System.out.println("\nƒ£–Õ->Map£®∫ˆ¬‘Ω¯––ƒ£–Õ◊÷µ‰◊™ªª£©----------------------------------\n");
+		System.out.println("\n模型->Map（设置忽略进行模型Map转化的属性名）----------------------------------\n");
 		map = (Map<String, Object>) Object_XMMap.setObject(xmObject).getMapByObjectWithIgnoredKeys(ignoredKeys, null);
 		System.out.println(map);
 
-		System.out.println("\n…Ë÷√classµƒ‘ –ÌΩ¯––ƒ£–Õ◊÷µ‰◊™ªªKey----------------------------------\n");
+		System.out.println("\n模型->Map（设置类允许进行模型Map转化的属性名）----------------------------------\n");
 		Object_XMClass.setClass(XMObject.class).setupAllowedPropertyNames(new XMAllowedPropertyNames() {
 
 			@Override
@@ -121,7 +121,7 @@
 			}
 		});
 
-		System.out.println("\n…Ë÷√classµƒ∫ˆ¬‘Ω¯––ƒ£–Õ◊÷µ‰◊™ªªKey----------------------------------\n");
+		System.out.println("\n模型->Map（设置类忽略进行模型Map转化的属性名）----------------------------------\n");
 		Object_XMClass.setClass(XMObject.class).setupIgnoredPropertyNames(new XMIgnoredPropertyNames() {
 
 			@Override
@@ -145,7 +145,7 @@
 			}
 		});
 
-		System.out.println("\nMap->ƒ£–Õ----------------------------------\n");
+		System.out.println("\nMap->模型----------------------------------\n");
 		map.clear();
 		map.put("name", "xuemiyang");
 		map.put("age", 22);
@@ -155,7 +155,7 @@
 		xmObject = (XMObject) Object_XMMap.setClass(XMObject.class).getInstanceByClass(map, null);
 		System.out.println(xmObject.toString());
 
-		System.out.println("\n…Ë÷√ÃÊªªµƒKey----------------------------------\n");
+		System.out.println("\n设置替换的key通过属性名----------------------------------\n");
 		Object_XMProperty.setClass(XMObjectOther.class)
 				.setupReplacedKeyFromPropertyName(new XMReplacedKeyFromPropertyName() {
 
@@ -202,7 +202,7 @@
 		xmObjectSub = (XMObjectSub) Object_XMMap.setClass(XMObjectSub.class).getInstanceByClass(map, null);
 		System.out.println(xmObjectSub.toString());
 
-		System.out.println("\nlist->ƒ£–Õ ˝◊È----------------------------------\n");
+		System.out.println("\nlist->模型list----------------------------------\n");
 		map.clear();
 		map.put("name", "xuemiyang");
 		map.put("age", 22);
@@ -216,7 +216,7 @@
 		objectList = Object_XMMap.setClass(XMObject.class).getObjectArrayByClass(list);
 		System.out.println(objectList);
 		
-		System.out.println("\nƒ£–Õ->jsonString----------------------------------\n");
+		System.out.println("\n模型->jsonString----------------------------------\n");
 		String jsonString = Object_XMMap.setObject(xmObject).getJsonStringByObject();
 		System.out.println(jsonString);
 		
@@ -225,8 +225,8 @@
 		map = (Map<String, Object>) Object_XMMap.setObject(jsonString).getJsonObjectByObject();
 		System.out.println(map);
 		
-		System.out.println("\nxmjsonΩÈ…‹----------------------------------------------------\n");
-		System.out.println("\nºÚµ•µƒjson◊™ªª----------------------------------------------------\n");
+		System.out.println("\nxmjson的介绍----------------------------------------------------\n");
+		System.out.println("\n简单的json解析----------------------------------------------------\n");
 		jsonString = "{\"name\":\"xuemiyang\", \"age\":22, \"height\":174.5, \"isMan\":true, \"url\":null}";
 		map = (Map<String, Object>) XMJson.getJsonObject(jsonString, null, null);
 		System.out.println(map);
@@ -248,7 +248,7 @@
 		jsonString = XMJson.getJsonString(list);
 		System.out.println(jsonString);
 		
-		System.out.println("\nªÒ»°jsonString÷–µƒƒ≥∏ˆ¬∑æ∂µƒ÷µ----------------------------------------------------\n");
+		System.out.println("\n解析jsonString通过键名---------------------------------------------------\n");
 		jsonString = "{\"name\":\"xuemiyang\", \"age\":22, \"money\":100.6, \"isMan\":true}";
 		object = XMJson.getJsonObject(jsonString, "name", null);
 		System.out.println(object);
@@ -257,7 +257,7 @@
 		object = XMJson.getJsonObject(jsonString, "money", null);
 		System.out.println(object);
 		
-		System.out.println("\nªÒ»°º¸¬∑æ∂µƒ÷µ----------------------------------------------------\n");
+		System.out.println("\n解析jsonString通过键路径----------------------------------------------------\n");
 		jsonString = "{\"name\":\"xuemiyang\", \"age\":22, \"numArray\":[1,2,3,4,5], \"mapArray\":[{\"name\":\"jack\", \"isMan\":true}, {\"name\":\"rose\", \"isMan\":false}, {\"name\":\"tom\", \"isMan\":true}]}";
 		object = XMJson.getJsonObject(jsonString, "numArray.[2]", null);
 		System.out.println(object);
@@ -272,7 +272,7 @@
 		object = XMJson.getJsonObject(jsonString, "mapArray.isMan", null);
 		System.out.println(object);
 		
-		System.out.println("\nªÒ»°∑÷“≥ ˝æ›----------------------------------------------------\n");
+		System.out.println("\n解析jsonString通过分页----------------------------------------------------\n");
 		object = XMJson.getJsonObject(jsonString, "numArray.[1-3]", null);
 		System.out.println(object);
 		object = XMJson.getJsonObject(jsonString, "mapArray.[1-2]", null);
@@ -280,11 +280,11 @@
 		object = XMJson.getJsonObject(jsonString, "mapArray.[1-2].name", null);
 		System.out.println(object);
 		
-		System.out.println("\nªÒ»°∂‡Ãıº¸¬∑æ∂µƒ÷µ----------------------------------------------------\n");
+		System.out.println("\n解析jsonString通过多条键路径----------------------------------------------------\n");
 		object = XMJson.getJsonObject(jsonString, "numArray.[1-3], mapArray.[1-2], mapArray.[1-2].name", null);
 		System.out.println(object);
 		
-		System.out.println("\nªÒ»°º¸¬∑æ∂µƒ÷µÕ®π˝Ãıº˛----------------------------------------------------\n");
+		System.out.println("\n解析jsonString通过条件----------------------------------------------------\n");
 		jsonString = "{\"array\":[{\"name\":\"jack\", \"age\":22, \"money\":200.4}, {\"name\":\"rose\", \"age\":20, \"money\":1056.2}, {\"name\":\"tom\", \"age\":25, \"money\":20053.1}]}";
 		object = XMJson.getJsonObject(jsonString, "array.name", "\"array.age\" == 20");
 		System.out.println(object);
@@ -307,13 +307,13 @@
 		object = XMJson.getJsonObject(jsonString, "array.name", condition);
 		System.out.println(object);
 		
-		System.out.println("\nxmconditionµƒΩÈ…‹----------------------------------------------------\n");
+		System.out.println("\nxmcondition介绍----------------------------------------------------\n");
 		condition = XMConditionFactory.getCompositeCondition(null, "1 < 0 || (!(5 > 6) && 6 > 5)");
 		System.out.println(condition.calculate());
 		condition = XMConditionFactory.getCompositeCondition(null, "11155566 ? ^1{3}5{3}6{2}");
 		System.out.println(condition.calculate());
 		
-		System.out.println("\nŒ™jsonString…Ë÷√÷µ----------------------------------------------------\n");
+		System.out.println("\n设置jsonString的值----------------------------------------------------\n");
 		jsonString = XMJson.setJsonValue(jsonString, "array.money", "300", "\"array.name\" == rose");
 		System.out.println(jsonString);
 		jsonString = XMJson.setJsonValue(jsonString, "array.money", "900", "\"array.money\" == min(\"array.money\")");
@@ -327,13 +327,13 @@
 		jsonString = XMJson.setJsonValue(jsonString, "array.age", "null", null);
 		System.out.println(jsonString);
 		
-		System.out.println("\nŒ™jsonString…Ë÷√º¸----------------------------------------------------\n");
+		System.out.println("\n设置jsonString的key----------------------------------------------------\n");
 		jsonString = XMJson.setJsonKey(jsonString, "array", "peoples", null);
 		System.out.println(jsonString);
 		jsonString = XMJson.setJsonKey(jsonString, "peoples.name, peoples.money", "nickName, property", null);
 		System.out.println(jsonString);
 		
-		System.out.println("\nŒ™jsonStringÃÌº”jsonString----------------------------------------------------\n");
+		System.out.println("\n添加jsonString通过jsonString----------------------------------------------------\n");
 		jsonString = XMJson.addJsonString(jsonString, null, "\"dogs\":[{\"name\":\"do\"}], \"nums\":[1,2,3]", null);
 		System.out.println(jsonString);
 		jsonString = XMJson.addJsonString(jsonString, "peoples, dogs, nums", "\"donging\":{\"type\":\"play ball\"}, \"isMale\":true, 22", null);
@@ -341,59 +341,60 @@
 		jsonString = XMJson.addJsonString(jsonString, "peoples.donging", "\"count\":2", null);
 		System.out.println(jsonString);
 		
-		System.out.println("\nŒ™jsonString…æ≥˝jsonString----------------------------------------------------\n");
+		System.out.println("\n删除jsonString----------------------------------------------------\n");
 		jsonString = XMJson.deleteJsonString(jsonString, "peoples.donging.count, dogs, nums", null);
 		System.out.println(jsonString);
 		jsonString = XMJson.deleteJsonString(jsonString, "peoples.age", "\"peoples.age\" == null");
 		System.out.println(jsonString);
 		
-		System.out.println("\nÕ®π˝json¿¥¥¥Ω® ˝æ›ø‚----------------------------------------------------\n");
-		String database = XMJson.createTable(null, "goods", "{\"type\":\" ˝¬Î≤˙∆∑\", \"subGoods\":[{\"name\":\"–°√◊3\", \"price\":999.9}]}");
+		System.out.println("\n创建json表‚----------------------------------------------------\n");
+		String database = XMJson.createTable(null, "goods", "{\"type\":\"电子产品\", \"subGoods\":[{\"name\":\"小米3\", \"price\":999.9}]}");
 		System.out.println(database);
-		database = XMJson.createTable(database, "houses", "{\"name\":\"ºÚ¬™Œ›◊”\", \"address\":\"π„Œ˜π∆Ω –xx’ÚxxΩ÷xxx∫≈\", \"size\":89}");
-		System.out.println(database);
-		
-		System.out.println("\n≤Â»Î ˝æ›----------------------------------------------------\n");
-		database = XMJson.insertKeyValues(database, "goods", "{\"type\":\"ÀÆπ˚\", \"subGoods\":[{\"name\":\"œ„Ω∂\", \"price\":1.5}]}",null);
-		System.out.println(database);
-		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"ª™Œ™»Ÿ“´3C\", \"price\":555}", "\"type\" ==  ˝¬Î≤˙∆∑");
-		System.out.println(database);
-		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"iphone6\", \"price\":4800}", "\"type\" ==  ˝¬Î≤˙∆∑");
-		System.out.println(database);
-		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"˜»◊Â\", \"price\":1700}", "\"type\" ==  ˝¬Î≤˙∆∑");
-		System.out.println(database);
-		database = XMJson.insertKeyValues(database, "houses", "{\"name\":\"ª™¿ˆŒ›◊”\", \"address\":\"π„÷› –∫£÷È«¯xxΩ÷xx∫≈\", \"size\":200}", null);
+		database = XMJson.createTable(database, "houses", "{\"name\":\"简陋屋子\", \"address\":\"广西桂平市xx镇xx街xxx号\", \"size\":89}");
 		System.out.println(database);
 		
-		System.out.println("\n…æ≥˝ ˝æ›----------------------------------------------------\n");
-		database = XMJson.deleteValues(database, "houses.[0-*]", "\"name\" == ºÚ¬™Œ›◊”");
+		System.out.println("\n插入键值对----------------------------------------------------\n");
+		database = XMJson.insertKeyValues(database, "goods", "{\"type\":\"水果\", \"subGoods\":[{\"name\":\"香蕉\", \"price\":1.5}]}",null);
 		System.out.println(database);
-		database = XMJson.deleteValues(database, "goods.subGoods.[0-*]", "\"type\" ==  ˝¬Î≤˙∆∑  && \"subGoods.name\" == –°√◊3");
+		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"华为3C\", \"price\":555}", "\"type\" ==  电子产品");
+		System.out.println(database);
+		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"iphone6\", \"price\":4800}", "\"type\" ==  电子产品");
+		System.out.println(database);
+		database = XMJson.insertKeyValues(database, "goods.subGoods", "{\"name\":\"魅族\", \"price\":1700}", "\"type\" ==  电子产品");
+		System.out.println(database);
+		database = XMJson.insertKeyValues(database, "houses", "{\"name\":\"华丽屋子\", \"address\":\"广州市海珠区xx街xx号\", \"size\":200}", null);
+		System.out.println(database);
+		
+		System.out.println("\n删除值----------------------------------------------------\n");
+		database = XMJson.deleteValues(database, "houses.[0-*]", "\"name\" == 简陋屋子");
+		System.out.println(database);
+		database = XMJson.deleteValues(database, "goods.subGoods.[0-*]", "\"type\" ==  电子产品  && \"subGoods.name\" == 小米3");
 		System.out.println(database);
 		database = XMJson.deleteValues(database, "houses", null);
 		System.out.println(database);
 		
-		System.out.println("\n∏¸–¬÷µ----------------------------------------------------\n");
-		database = XMJson.updateValues(database, "goods", "subGoods.price, subGoods.name", "890, \"ª™Œ™»Ÿ“´«‡¥∫∞Ê\"", "\"subGoods.name\" == ª™Œ™»Ÿ“´3C");
+		System.out.println("\n更新值----------------------------------------------------\n");
+		database = XMJson.updateValues(database, "goods", "subGoods.price, subGoods.name", "890, \"华为荣耀\"", "\"subGoods.name\" == 华为3C");
 		System.out.println(database);
-		database = XMJson.updateValues(database, "goods.subGoods", "price, name", "1650, \"˜»◊Â2\"", "\"subGoods.name\" == ˜»◊Â");
+		database = XMJson.updateValues(database, "goods.subGoods", "price, name", "1650, \"魅族2\"", "\"subGoods.name\" == 魅族");
 		System.out.println(database);
 		
-		System.out.println("\n∏¸–¬º¸----------------------------------------------------\n");
+		System.out.println("\n更新key----------------------------------------------------\n");
 		database = XMJson.updateKeys(database, "goods", "type", "goodType", null);
 		System.out.println(database);
 		
-		System.out.println("\n≤È—Ø÷µ----------------------------------------------------\n");
+		System.out.println("\n查询JsonObject----------------------------------------------------\n");
 		object = XMJson.selectJsonObject(database, "goods", null);
 		System.out.println(object);
-		object = XMJson.selectJsonObject(database, "goods", "\"goods.goodType\" ==  ˝¬Î≤˙∆∑");
+		object = XMJson.selectJsonObject(database, "goods", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
-		object = XMJson.selectJsonObject(database, "goods.subGoods.name", "\"goods.goodType\" ==  ˝¬Î≤˙∆∑");
+		object = XMJson.selectJsonObject(database, "goods.subGoods.name", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
-		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2]", "\"goods.goodType\" ==  ˝¬Î≤˙∆∑");
+		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2]", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
-		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2].name", "\"goods.goodType\" ==  ˝¬Î≤˙∆∑");
+		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2].name", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
-		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2].name, goods.subGoods.[1-2].price", "\"goods.goodType\" ==  ˝¬Î≤˙∆∑");
+		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2].name, goods.subGoods.[1-2].price", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
 	}
+
