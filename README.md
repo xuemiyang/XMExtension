@@ -1,6 +1,7 @@
 # XMExtension
 一个轻量级的JSON转模型工具。可以进行模型转Map，Map转模型，listMap转list模型，list模型转listMap，JSON解析Map、list，对JSON进行数据库一样的操作（增删改查），建立以JSON字符串为内容的类似数据库的字符串容器。
 
+```java
 @SuppressWarnings("unchecked")
 	@Test
 	public void test() {
@@ -397,4 +398,5 @@
 		object = XMJson.selectJsonObject(database, "goods.subGoods.[1-2].name, goods.subGoods.[1-2].price", "\"goods.goodType\" ==  电子产品");
 		System.out.println(object);
 	}
+```
 
